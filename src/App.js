@@ -13,14 +13,21 @@ function App() {
     {text: 'Aprender Redux y Express',completed: false},
   ]
 
-  let todosCompleted = todos.filter(todo => todo.completed === true)
+  const [todoState, setTodoState] = React.useState(todos)
+  const [searchValue, setSearchValue] = React.useState('');
+  
+  const todosCompleted = todoState.filter(todo => todo.completed === true).length
+  const totalTodos = todoState.length
 
   return (
     <>
 
-      <TodoCounter completed={todosCompleted.length} total={todos.length}/>
+      <TodoCounter todosCompleted={todosCompleted} totalTodos={totalTodos}/>
 
-      <TodoSearch/>
+      <TodoSearch
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
 
       <TodoList >
         {todos.map((todo,i)=>(

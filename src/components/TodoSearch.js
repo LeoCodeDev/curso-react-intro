@@ -1,8 +1,8 @@
 import React from 'react'
 import '../styles/TodoSearch.css'
 
-function TodoSearch() {
-  const [searchValue, setSearchValue] = React.useState('');
+function TodoSearch(props) {
+  const { searchValue, setSearchValue } = props;
   
   return (
     <input 
@@ -10,7 +10,7 @@ function TodoSearch() {
       className='TodoSearch' 
       value={searchValue}
       onChange={(e) =>{
-        setSearchValue(e.target.value)
+        setSearchValue(e.target.value)     
       }}
       ></input>
   )

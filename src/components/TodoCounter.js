@@ -2,10 +2,11 @@ import React from 'react'
 import '../styles/TodoCounter.css'
 
 function TodoCounter(props) {
-  let {total, completed} = props
+  let {totalTodos, todosCompleted} = props
   return (
-    <h1 className='TodoCounter'>
-        Has Completado <span>{completed}</span> de <span>{total}</span> TODOs
+    <h1 
+      className='TodoCounter'>
+        Has Completado <span>{todosCompleted}</span> de <span>{totalTodos}</span> TODOs
     </h1>
   )
 }
