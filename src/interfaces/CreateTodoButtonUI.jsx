@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/CreateTodoButton.css'
 
-const CreateTodoButton = () => {
+const CreateTodoButtonUI = () => {
   return (
     <button className='CreateTodoButton'>
         +
@@ -9,4 +9,4 @@ const CreateTodoButton = () => {
   )
 }
 
-export {CreateTodoButton}
+export {CreateTodoButtonUI}

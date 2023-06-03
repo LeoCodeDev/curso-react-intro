@@ -1,15 +1,14 @@
 import React from 'react'
-import {RxCheck} from 'react-icons/rx'
+import {RxCross1} from 'react-icons/rx'
 
-
-const CompleteIcon = (props) => {
+const DeleteIconUI = (props) => {
     const {className, onClick} = props
   return (
-    <RxCheck
+    <RxCross1
         className={className}
         onClick={onClick}
     />
   )
 }
 
-export {CompleteIcon}
+export {DeleteIconUI}

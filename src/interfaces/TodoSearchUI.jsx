@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/TodoSearch.css'
 
-function TodoSearch(props) {
+function TodoSearchUI(props) {
   const { searchValue, setSearchValue } = props;
   
   return (
@@ -16,4 +16,4 @@ function TodoSearch(props) {
   )
 }
 
-export { TodoSearch }
+export { TodoSearchUI }

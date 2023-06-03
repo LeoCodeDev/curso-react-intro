@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/TodoCounter.css'
 
-function TodoCounter(props) {
+function TodoCounterUI(props) {
   let {totalTodos, todosCompleted} = props
   return (
     <h1 
@@ -11,4 +11,4 @@ function TodoCounter(props) {
   )
 }
 
-export {TodoCounter}
+export {TodoCounterUI}
