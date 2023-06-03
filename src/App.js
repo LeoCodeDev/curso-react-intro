@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { TodoCounter } from "./components/TodoCounter";
 import { TodoSearch } from "./components/TodoSearch";
 import { TodoList } from "./components/TodoList";
@@ -7,42 +7,61 @@ import { CreateTodoButton } from "./components/CreateTodoButton";
 
 function App() {
   const todos = [
-    {text: 'Hacer la app todo', completed : true},
-    {text: 'Hacer la app registro de deudas',completed: false},
-    {text: 'Terminar de aprender React',completed: true},
-    {text: 'Aprender Redux y Express',completed: false},
-  ]
+    { text: "Hacer la app todo", completed: true },
+    { text: "Hacer la app registro de deudas", completed: false },
+    { text: "Terminar de aprender React", completed: true },
+    { text: "Aprender Redux y Express", completed: false },
+  ];
 
-  const [todoState, setTodoState] = React.useState(todos)
-  const [searchValue, setSearchValue] = React.useState('');
+  const [todoState, setTodoState] = React.useState(todos);
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const todosCompleted = todoState.filter(
+    (todo) => todo.completed === true
+  ).length;
+
+  const toggleTodoCompleted = (text) =>  {
+    const newTodos = [...todoState];
+    const todoIndex = newTodos.findIndex(todo => todo.text === text);
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    setTodoState(newTodos);
+  }
   
-  const todosCompleted = todoState.filter(todo => todo.completed === true).length
-  const totalTodos = todoState.length
+  const deleteTodo = (text) => {
+    const newTodos = [...todoState];
+    const todoIndex = newTodos.findIndex(todo => todo.text === text);
+    newTodos.splice(todoIndex, 1);
+    setTodoState(newTodos);
+  }
+
+  const totalTodos = todoState.length;
+  const searchedTodos = todoState.filter((todo) => {
+    const todoText = todo.text.toLocaleLowerCase();
+    const searchText = searchValue.toLocaleLowerCase();
+    return todoText.includes(searchText);
+  });
 
   return (
     <>
+      <TodoCounter todosCompleted={todosCompleted} totalTodos={totalTodos} />
 
-      <TodoCounter todosCompleted={todosCompleted} totalTodos={totalTodos}/>
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 
-      <TodoSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-
-      <TodoList >
-        {todos.map((todo,i)=>(
+      <TodoList>
+        {searchedTodos.map((todo) => (
           <TodoItem
-            key={`task ${i+1}`}
+            key={todo.text}
             text={todo.text}
             completed={todo.completed}
+            onToggle={() => toggleTodoCompleted(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
           />
         ))}
       </TodoList>
 
       <CreateTodoButton />
-
     </>
   );
 }
 
-export {App};
+export { App };

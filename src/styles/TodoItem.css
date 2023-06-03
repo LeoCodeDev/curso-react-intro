@@ -35,6 +35,10 @@
     font-weight: bold;
     color: #ababab;
   }
+
+  .check:hover {
+    cursor: pointer;
+  }
   
   .closer-container .closer:hover {
     color: rgb(201, 66, 66);
