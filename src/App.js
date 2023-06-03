@@ -4,35 +4,30 @@ import { TodoSearch } from "./components/TodoSearch";
 import { TodoList } from "./components/TodoList";
 import { TodoItem } from "./components/TodoItem";
 import { CreateTodoButton } from "./components/CreateTodoButton";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function App() {
-  const todos = [
-    { text: "Hacer la app todo", completed: true },
-    { text: "Hacer la app registro de deudas", completed: false },
-    { text: "Terminar de aprender React", completed: true },
-    { text: "Aprender Redux y Express", completed: false },
-  ];
-
-  const [todoState, setTodoState] = React.useState(todos);
+  
+  const [todoState, setTodoState] = useLocalStorage("Todos_V1", []);
   const [searchValue, setSearchValue] = React.useState("");
 
   const todosCompleted = todoState.filter(
     (todo) => todo.completed === true
   ).length;
 
-  const toggleTodoCompleted = (text) =>  {
+  const toggleTodoCompleted = (text) => {
     const newTodos = [...todoState];
-    const todoIndex = newTodos.findIndex(todo => todo.text === text);
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
     setTodoState(newTodos);
-  }
-  
+  };
+
   const deleteTodo = (text) => {
     const newTodos = [...todoState];
-    const todoIndex = newTodos.findIndex(todo => todo.text === text);
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
     newTodos.splice(todoIndex, 1);
     setTodoState(newTodos);
-  }
+  };
 
   const totalTodos = todoState.length;
   const searchedTodos = todoState.filter((todo) => {
