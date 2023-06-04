@@ -4,7 +4,12 @@ import { AppUI } from "../interfaces/AppUI";
 
 function App() {
   
-  const [todoState, setTodoState] = useLocalStorage("Todos_V1", []);
+  const {
+    item: todoState,
+    updateItem: setTodoState,
+    loading,
+    error,
+  } = useLocalStorage("Todos_V1", []);
   const [searchValue, setSearchValue] = React.useState("");
 
   const todosCompleted = todoState.filter(
@@ -34,6 +39,8 @@ function App() {
 
   return (
     <AppUI
+      loading={loading}
+      error={error}
       todosCompleted={todosCompleted}
       totalTodos={totalTodos}
       toggleTodoCompleted={toggleTodoCompleted}
