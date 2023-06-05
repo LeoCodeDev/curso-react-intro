@@ -4,7 +4,13 @@ import { TodoSearchUI } from "./TodoSearchUI";
 import { TodoListUI } from "./TodoListUI";
 import { TodoItemUI } from "./TodoItemUI";
 import { CreateTodoButtonUI } from "./CreateTodoButtonUI";
-import { Loader } from "./Loader";
+import { LoaderUIC } from "./LoaderUIC";
+import { LoaderUI } from "./LoaderUI";
+import { ErrorUI } from "./ErrorUI";
+import { EmptyTodosUI } from "./EmptyTodosUI";
+
+
+
 
 function AppUI({
   loading,
@@ -24,7 +30,16 @@ function AppUI({
       <TodoSearchUI searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <TodoListUI>
-        {loading && <Loader/>}
+        {loading && 
+        // <LoaderUI/>
+        <>
+        <LoaderUIC/>
+        <LoaderUIC/>
+        <LoaderUIC/>
+        <LoaderUIC/>
+        <LoaderUIC/>
+        </>
+        }
         {error && (
           <p className="alternative-text error">Something went wrong</p>
         )}

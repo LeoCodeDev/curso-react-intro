@@ -35,3 +35,8 @@
 @keyframes s2{ 
   100%{transform: rotate(.5turn)}
 }
+
+.alternative-text.loading-text {
+  font-size: 2.4rem;
+  color: rgba(255,255,255,0.5);
+}

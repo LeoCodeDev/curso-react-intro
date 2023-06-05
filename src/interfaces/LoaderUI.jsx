@@ -1,13 +1,15 @@
 import React from "react";
 import "../styles/Loader.css"
 
-const Loader = () => {
+const LoaderUI = () => {
   return (
+    <>
     <div className="loader-container">
       <div className="custom-loader"></div>
-      <p className="alternative-text loading-text">Loading...</p>
     </div>
+      <p className="alternative-text loading-text">Loading...</p>
+    </>
   );
 };
 
-export { Loader };
+export { LoaderUI };
