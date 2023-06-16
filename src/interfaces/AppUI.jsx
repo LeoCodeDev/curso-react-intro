@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { TodoCounterUI } from "./TodoCounterUI";
 import { TodoSearchUI } from "./TodoSearchUI";
 import { TodoListUI } from "./TodoListUI";
@@ -8,37 +8,37 @@ import { LoaderUIC } from "./LoaderUIC";
 import { LoaderUI } from "./LoaderUI";
 import { ErrorUI } from "./ErrorUI";
 import { EmptyTodosUI } from "./EmptyTodosUI";
+import { Modal } from "../components/Modal";
+import { TodoContext } from "../context/TodoContext/TodoContext";
+import { DeleteIconUI } from "./DeleteIconUI";
 
+function AppUI() {
+  const {
+    loading,
+    error,
+    toggleTodoCompleted,
+    deleteTodo,
+    searchedTodos,
+    modalIsOpen,
+    setModalIsOpen,
+  } = useContext(TodoContext);
 
-
-
-function AppUI({
-  loading,
-  error,
-  todosCompleted,
-  totalTodos,
-  toggleTodoCompleted,
-  deleteTodo,
-  searchValue,
-  setSearchValue,
-  searchedTodos,
-}) {
   return (
     <>
-      <TodoCounterUI todosCompleted={todosCompleted} totalTodos={totalTodos} />
+      <TodoCounterUI />
 
-      <TodoSearchUI searchValue={searchValue} setSearchValue={setSearchValue} />
+      <TodoSearchUI />
 
       <TodoListUI>
-        {loading && 
-        // <LoaderUI/>
-        <>
-        <LoaderUIC/>
-        <LoaderUIC/>
-        <LoaderUIC/>
-        <LoaderUIC/>
-        <LoaderUIC/>
-        </>
+        {
+          loading && <LoaderUI />
+          // <>
+          // <LoaderUIC/>
+          // <LoaderUIC/>
+          // <LoaderUIC/>
+          // <LoaderUIC/>
+          // <LoaderUIC/>
+          // </>
         }
         {error && (
           <p className="alternative-text error">Something went wrong</p>
@@ -59,6 +59,12 @@ function AppUI({
       </TodoListUI>
 
       <CreateTodoButtonUI />
+
+      {modalIsOpen && (
+        <Modal>
+          <p>FUNCIONALIDAD DEL MODAL</p>
+        </Modal>
+      )}
     </>
   );
 }

@@ -1,8 +1,10 @@
 import React from 'react'
 import '../styles/TodoCounter.css'
+import { TodoContext } from '../context/TodoContext/TodoContext'
 
-function TodoCounterUI(props) {
-  let {totalTodos, todosCompleted} = props
+function TodoCounterUI() {
+  const {totalTodos, todosCompleted} = React.useContext(TodoContext)
+  
   return (
     <h1 
       className='TodoCounter'>
