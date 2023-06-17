@@ -12,16 +12,18 @@
 }
 
 .modalContent {
-    border: 2px solid;
     border-radius: 1.5rem;
     padding: 30px;
+    width: 300px;
+    height: auto;
     position: relative;
     font-size: large;
+    background-color: #e2d6e9;
 }
 
 .closeModal {
     position: absolute;
-    top: -32px;
+    top: -20px;
     right: -32px;
     border: solid 3px rgb(190, 76, 76);
     background-color: rgb(190, 76, 76);

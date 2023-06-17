@@ -1,0 +1,37 @@
+.createTodo-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+}
+
+.createTodo-label {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.createTodo-text {
+    width: 100%;
+    min-height: 70px;
+    border-radius: 1.5rem;
+    text-align: center;
+    font-size: 1.4rem;
+    padding: 8px;
+}
+
+.createTodo-text:focus {
+    outline: none;
+}
+
+.createTodo-button {
+    width: 80px;
+    height: 25px;
+    font-size: 1.6rem;
+    border: none;
+    background-color: rgb(197, 148, 242);
+    border-radius: 8px;
+    color: blanchedalmond;
+    font-weight: 700;
+    cursor: pointer;
+}

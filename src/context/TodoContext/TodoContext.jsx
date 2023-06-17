@@ -4,7 +4,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 const TodoContext = React.createContext();
 const TodoProvider = ({ children }) => {
 
-  const [modalIsOpen, setModalIsOpen] = React.useState(false); // !cambiar a false cuando este listo
+  const [modalIsOpen, setModalIsOpen] = React.useState(true); // !cambiar a false cuando este listo
 
   const {
     item: todoState,
@@ -33,6 +33,15 @@ const TodoProvider = ({ children }) => {
     setTodoState(newTodos);
   };
 
+  const addTodo = (text) => {
+    const newTodos = [...todoState];
+    newTodos.push({
+      text,
+      completed: false,
+    })
+    setTodoState(newTodos)
+  }
+
   const totalTodos = todoState.length;
 
   const searchedTodos = todoState.filter((todo) => {
@@ -57,6 +66,7 @@ const TodoProvider = ({ children }) => {
         error,
         modalIsOpen,
         setModalIsOpen,
+        addTodo
       }}
     >
       {children}

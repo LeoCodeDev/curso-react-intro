@@ -11,6 +11,7 @@ import { EmptyTodosUI } from "./EmptyTodosUI";
 import { Modal } from "../components/Modal";
 import { TodoContext } from "../context/TodoContext/TodoContext";
 import { DeleteIconUI } from "./DeleteIconUI";
+import { TodoForm } from "../components/TodoForm";
 
 function AppUI() {
   const {
@@ -20,7 +21,6 @@ function AppUI() {
     deleteTodo,
     searchedTodos,
     modalIsOpen,
-    setModalIsOpen,
   } = useContext(TodoContext);
 
   return (
@@ -62,7 +62,7 @@ function AppUI() {
 
       {modalIsOpen && (
         <Modal>
-          <p>FUNCIONALIDAD DEL MODAL</p>
+          <TodoForm/>
         </Modal>
       )}
     </>
