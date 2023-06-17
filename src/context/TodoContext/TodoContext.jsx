@@ -4,7 +4,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 const TodoContext = React.createContext();
 const TodoProvider = ({ children }) => {
 
-  const [modalIsOpen, setModalIsOpen] = React.useState(true); // !cambiar a false cuando este listo
+  const [modalIsOpen, setModalIsOpen] = React.useState(false);
 
   const {
     item: todoState,
